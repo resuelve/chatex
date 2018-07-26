@@ -18,7 +18,7 @@ end
 
 El archivo __.env.dist__ contiene un listado actualizado de las variables de entorno necesarias para el proyecto, se debe copiar ese archivo a uno nuevo llamado __.env__
 
-Tambien necesitaras crear un archivo llamando google_credentials.json dentro de la carpeta secrets.
+También necesitarás crear un archivo llamando google_credentials.json dentro de la carpeta secrets.
 
 Preguntar al equipo por los valores de las variables de entorno.
 
@@ -33,7 +33,7 @@ export $(cat .env | xargs)
 Pasos para contribuir en el proyecto:
 
 - Hacer un __fork__ del repositorio a nuestra cuenta privada de Github.
-- Clonar nuestro __fork__ en nuestra maquina de trabajo.
+- Clonar nuestro __fork__ en nuestra máquina de trabajo.
 - Crear un remote llamado upstream que apunte hacia el repo de Resuelve.
 
 ```shell

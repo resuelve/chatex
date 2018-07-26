@@ -4,6 +4,8 @@ defmodule Chatex.Helpers.CardHelper do
   """
 
   @doc """
+  Establece botones para el cuerpo del card.
+
   https://developers.google.com/hangouts/chat/reference/message-formats/cards#buttons
   """
   @spec button(String.t, String.t, String.t) :: map
@@ -24,7 +26,7 @@ defmodule Chatex.Helpers.CardHelper do
   end
 
   @doc """
-  Ayuda a establer como se representará en el chat una lista de botones.
+  Ayuda a establecer como se representará en el chat una lista de botones.
   """
   @spec buttons_display(String.t, list) :: map | list
   def buttons_display("inline", buttons) do
@@ -38,6 +40,8 @@ defmodule Chatex.Helpers.CardHelper do
   end
 
   @doc """
+  Establece el header de un card.
+  
   https://developers.google.com/hangouts/chat/reference/message-formats/cards#headers
   """
   @spec header(String.t, String.t, String.t, String.t) :: map

@@ -6,7 +6,7 @@ defmodule Chatex.Service.Spaces do
   import Chatex, only: [request: 3]
 
   @doc """
-  Lista los espacios en los cuales se agregado al bot.
+  Lista los espacios en los cuales se ha agregado al bot.
   """
   @spec list(integer, list, String.t | nil) :: tuple
   def list(pageSize \\ 100, acc \\ [], pageToken \\ "") do
