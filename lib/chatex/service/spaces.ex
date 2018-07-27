@@ -13,8 +13,22 @@ defmodule Chatex.Service.Spaces do
     case request(:get, "spaces?pageSize=#{pageSize}&pageToken=#{pageToken}", "") do
       {:ok, %{"spaces" => spaces, "nextPageToken" => ""}} ->
         {:ok, acc ++ spaces}
-      {:ok, %{"spaces" => spaces, "nextPageToken" => nextPageToken}} ->
-        list(pageSize, acc ++ spaces, nextPageToken)
+      {:ok, %{"spaces" => spaces, "nextPageToken" => next_page_token}} ->
+        list(pageSize, acc ++ spaces, next_page_token)
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
+  @doc """
+  Lista un atributo de los espacios.
+  """
+  @spec list_attribute(String.t, integer) :: tuple
+  def list_attribute(attribute \\ "displayName", pageSize \\ 100) do
+    case list(pageSize) do
+      {:ok, spaces} ->
+        {:ok, Enum.reduce(spaces, "", fn(space, acc) -> acc <>
+                                            "- #{space["#{attribute}"]}\n" end)}
       {:error, error} ->
         {:error, error}
     end

@@ -1,4 +1,4 @@
-defmodule Chatex.Helpers.Token do
+defmodule Chatex.Helpers.TokenHelper do
   @moduledoc """
   Helper para facilitar la validación del token de Google Chat.
   """
