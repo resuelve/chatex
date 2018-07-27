@@ -12,7 +12,7 @@ defmodule Chatex do
   def request(method, path, body) do
     HTTPoison.start
 
-    case HTTPoison.request(method, "#{host}#{path}", body, headers()) do
+    case HTTPoison.request(method, "#{host()}#{path}", body, headers()) do
       {:ok, %HTTPoison.Response{status_code: status, body: body}} when status in 200..299 ->
         {:ok, Poison.decode!(body)}
       {:ok, %HTTPoison.Response{status_code: status, body: body}} when status in 400..499 ->

@@ -57,12 +57,36 @@ Lista los espacios en los cuales se agregado al bot. [(📘)](https://developers
 list(pageSize \\ 100, acc \\ [], pageToken \\ "")
 ```
 
+Lista un atributo de los espacios.
+
+```elixir
+list_attribute(attribute \\ "displayName", pageSize \\ 100)
+```
+
 ### Chatex.Service.Spaces.Members
 
 Lista los miembros de un canal. [(📘)](https://developers.google.com/hangouts/chat/reference/rest/v1/spaces.members/list)
 
 ```elixir
 list(room, pageSize \\ 100, acc \\ [], pageToken \\ nil)
+```
+
+Lista los miembros de un canal excluyendo usuarios anonimos.
+
+```elixir
+list_active(room, pageSize \\ 100)
+```
+
+Lista un atributo de los miembros activos del canal.
+
+```elixir
+list_attribute(room, attribute \\ "displayName", pageSize \\ 100)
+```
+
+Obtiene el atributo de un miembro aleatorio.
+
+```elixir
+random(room, attribute \\ "name", pageSize \\ 100)
 ```
 
 ### Chatex.Service.Spaces.Messages
