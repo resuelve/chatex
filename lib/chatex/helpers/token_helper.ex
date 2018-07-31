@@ -9,20 +9,20 @@ defmodule Chatex.Helpers.TokenHelper do
   Valida que el token sea el mismo que el proporcionado por Google Chat.
   """
   @spec validate(nil | String.t) :: tuple
-  def validate(nil), do: {:error, "No encontrado"}
+  def validate(nil), do: {:error, "Token no encontrado"}
   def validate(send), do: _compare(send, _token())
 
   # ---------------------------------------------------------------------------
   # Compará el token que llega contra el guardado
   # ---------------------------------------------------------------------------
   defp _compare(send, expected) when send == expected do
-    {:ok, "Valido"}
+    {:ok, "Token valido"}
   end
   defp _compare(send, expected) do
     Logger.info "Token esperado: #{expected}"
     Logger.info "Token enviado: #{send}"
 
-    {:error, "inválido"}
+    {:error, "Token inválido"}
   end
 
   # ---------------------------------------------------------------------------
