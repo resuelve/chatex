@@ -25,7 +25,7 @@ defmodule Chatex.MixProject do
       {:credo,          "~> 0.9.1", only: [:dev, :test]},
       {:excoveralls,    "~> 0.8", only: :test},
       {:goth,           "~> 0.9.0"},
-      {:httpoison,      "~> 0.13"},
+      {:httpoison,      "~> 1.4"},
       {:mock,           "~> 0.3.0", only: :test},
       {:poison,         "~> 3.1"},
     ]
