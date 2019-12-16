@@ -102,3 +102,9 @@ Actualiza un mensaje. [(📘)](https://developers.google.com/hangouts/chat/refer
 ```elixir
 update(room, update_mask, message)
 ```
+
+Elimina un mensaje. [(📘)](https://developers.google.com/hangouts/chat/reference/rest/v1/spaces.messages/delete)
+
+```elixir
+delete(room, message)
+```
