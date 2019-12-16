@@ -20,4 +20,12 @@ defmodule Chatex.Service.Spaces.Messages do
   def update(room, update_mask, message) do
     request(:put, "spaces/#{room}?updateMask=#{update_mask}", Poison.encode!(message))
   end
+
+  @doc """
+  Elimina un mensaje.
+  """
+  @spec delete(String.t, String.t) :: tuple
+  def delete(room, message) do
+    request(:delete, "spaces/#{room}/messages/#{message}", "")
+  end
 end
