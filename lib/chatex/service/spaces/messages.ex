@@ -24,8 +24,10 @@ defmodule Chatex.Service.Spaces.Messages do
   @doc """
   Elimina un mensaje.
   """
+  @spec delete(String.t) :: tuple
   @spec delete(String.t, String.t) :: tuple
-  def delete(room, message) do
-    request(:delete, "spaces/#{room}/messages/#{message}", "")
+  def delete(message_id), do: request(:delete, message_id, "")
+  def delete(room_id, message_id) do
+    request(:delete, "spaces/#{room_id}/messages/#{message_id}", "")
   end
 end
