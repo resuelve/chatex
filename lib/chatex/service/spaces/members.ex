@@ -14,7 +14,7 @@ defmodule Chatex.Service.Spaces.Members do
       {:ok, %{"memberships" => members, "nextPageToken" => ""}} ->
         {:ok, acc ++ members}
       {:ok, %{"memberships" => members, "nextPageToken" => next_page_token}} ->
-        list(room, pageSize, next_page_token, acc ++ members)
+        list(room, pageSize, acc ++ members, next_page_token)
       {:error, error} ->
         {:error, error}
     end
