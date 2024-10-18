@@ -55,14 +55,16 @@ defmodule Chatex.Service.Spaces.MessagesTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@message)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@message)}}
+          end
+        ]
       }
     ]) do
       assert Messages.create("hZmKQAAAAAE", %{text: "hola"}) == {:ok, @message}
@@ -74,18 +76,21 @@ defmodule Chatex.Service.Spaces.MessagesTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@update_message)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@update_message)}}
+          end
+        ]
       }
     ]) do
-      assert Messages.update("hZmKQAAAAAE/messages/HP0p_8gQNi4.HP0p_8gQNi4",
-                        "text", %{text: "actualizado"}) == {:ok, @update_message}
+      assert Messages.update("hZmKQAAAAAE/messages/HP0p_8gQNi4.HP0p_8gQNi4", "text", %{
+               text: "actualizado"
+             }) == {:ok, @update_message}
     end
   end
 end

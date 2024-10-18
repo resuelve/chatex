@@ -3,12 +3,26 @@ defmodule Chatex.MixProject do
 
   def project do
     [
-      app:                :chatex,
-      version:            "1.2.0",
-      elixir:             "~> 1.6",
-      start_permanent:    Mix.env() == :prod,
-      deps:               deps(),
-      test_coverage:      [tool: ExCoveralls],
+      app: :chatex,
+      version: "2.0.0",
+      elixir: "~> 1.10",
+      package: package(),
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      aliases: aliases(),
+      test_coverage: [tool: ExCoveralls],
+      source_url: "https://github.com/resuelve/chatex",
+      docs: [
+        main: "Bisnex"
+      ]
+    ]
+  end
+
+  defp package do
+    [
+      organization: "resuelve",
+      licenses: [],
+      links: %{"GitHub" => "https://github.com/resuelve/chatex"}
     ]
   end
 
@@ -22,12 +36,18 @@ defmodule Chatex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:credo,          "~> 0.9.1", only: [:dev, :test]},
-      {:excoveralls,    "~> 0.8", only: :test},
-      {:goth,           "~> 0.9.0"},
-      {:httpoison,      "~> 1.4"},
-      {:mock,           "~> 0.3.0", only: :test},
-      {:poison,         "~> 3.1"},
+      {:credo, "~> 1.6.7", only: [:dev, :test]},
+      {:excoveralls, "~> 0.12", only: :test},
+      {:goth, "~> 1.2.0"},
+      {:httpoison, "~> 1.8"},
+      {:mock, "~> 0.3.0", only: :test},
+      {:poison, "~> 3.1"}
+    ]
+  end
+
+  defp aliases do
+    [
+      ci: ["format --check-formatted"]
     ]
   end
 end
