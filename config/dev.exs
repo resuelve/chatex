@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :chatex, host: System.get_env("GOOGLE_CHAT_URL")
 config :chatex, token: System.get_env("BOT_TOKEN")

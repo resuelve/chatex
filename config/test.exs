@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :chatex, host: "api.dialogflow.com"
 config :chatex, bot: "LBot"

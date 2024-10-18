@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :chatex, host: "${GOOGLE_CHAT_URL}"
 config :chatex, token: "${BOT_TOKEN}"
