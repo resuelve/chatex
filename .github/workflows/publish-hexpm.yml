@@ -13,7 +13,7 @@
       publish-hexpm:
         name: publish to hex.pm
         runs-on: ubuntu-latest
-        container: elixir:1.10-alpine
+        container: elixir:1.14-alpine
         steps:
           - uses: actions/checkout@v2
           - name: Install dependencies
