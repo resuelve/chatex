@@ -41,7 +41,8 @@ defmodule Chatex.MixProject do
       {:goth, "~> 1.2.0"},
       {:httpoison, "~> 1.8"},
       {:mock, "~> 0.3.0", only: :test},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
     ]
   end
 
