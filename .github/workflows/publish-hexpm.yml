@@ -6,6 +6,9 @@
         tags:
           - "*"
     
+    env:
+        GOOGLE_CREDENTIALS: ./secrets/google_credentials.json
+    
     jobs:
       publish-hexpm:
         name: publish to hex.pm
@@ -15,6 +18,7 @@
           - uses: actions/checkout@v2
           - name: Install dependencies
             run: |
+              touch ./secrets/google_credentials.json
               apk add --update bash openssl git
               mix local.hex --force && mix local.rebar --force
           - name: Install elixir dependencies
