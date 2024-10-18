@@ -13,7 +13,7 @@
                 - uses: actions/checkout@v2
                 - name: Install build dependencies
                   run: |
-                    export GOOGLE_SECRET_JSON=fake_value
+                    export GOOGLE_CREDENTIALS=fake_value
                     apk add --update bash openssl git
                     mix local.hex --force && mix local.rebar --force
                 - name: Install elixir dependencies
