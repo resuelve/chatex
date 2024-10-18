@@ -7,7 +7,7 @@
 
     env:
         GOOGLE_CREDENTIALS: ./secrets/google_credentials.json
-        
+
     jobs:
         build-and-test:
             name: Build and test
@@ -25,4 +25,4 @@
                 - name: Run CI Tests
                   env:
                     MIX_ENV: test
-                  run: mix cxi
+                  run: mix ci
