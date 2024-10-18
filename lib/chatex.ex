@@ -8,17 +8,20 @@ defmodule Chatex do
   @doc """
   Envía una respuesta generada a google chat.
   """
-  @spec request(atom, String.t, String.t) :: tuple
+  @spec request(atom, String.t(), String.t()) :: tuple
   def request(method, path, body) do
-    HTTPoison.start
+    HTTPoison.start()
 
     case HTTPoison.request(method, "#{host()}#{path}", body, headers()) do
       {:ok, %HTTPoison.Response{status_code: status, body: body}} when status in 200..299 ->
         {:ok, Poison.decode!(body)}
+
       {:ok, %HTTPoison.Response{status_code: status, body: body}} when status in 400..499 ->
         {:error, Poison.decode!(body)}
+
       {:ok, %HTTPoison.Response{status_code: status, body: body}} when status >= 500 ->
         {:error, Poison.decode!(body)}
+
       {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, Poison.decode!(reason)}
     end
@@ -27,7 +30,7 @@ defmodule Chatex do
   # ---------------------------------------------------------------------------
   # URL de Google chat API.
   # ---------------------------------------------------------------------------
-  @spec host :: String.t
+  @spec host :: String.t()
   defp host, do: Application.get_env(:chatex, :host)
 
   # ---------------------------------------------------------------------------

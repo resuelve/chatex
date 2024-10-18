@@ -19,18 +19,19 @@ defmodule Chatex.Service.SpacesTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@spaces)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@spaces)}}
+          end
+        ]
       }
     ]) do
-      assert Spaces.list == {:ok, @spaces["spaces"]}
+      assert Spaces.list() == {:ok, @spaces["spaces"]}
     end
   end
 
@@ -39,15 +40,16 @@ defmodule Chatex.Service.SpacesTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@spaces)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@spaces)}}
+          end
+        ]
       }
     ]) do
       assert Spaces.list_attribute("displayName") == {:ok, "- \n- ⚙ Ingeniería\n"}

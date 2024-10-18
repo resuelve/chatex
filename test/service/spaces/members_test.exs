@@ -37,15 +37,16 @@ defmodule Chatex.Service.Spaces.MembersTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@members)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@members)}}
+          end
+        ]
       }
     ]) do
       assert Members.list("AAAAnZB0gGw") == {:ok, @members["memberships"]}
@@ -57,19 +58,20 @@ defmodule Chatex.Service.Spaces.MembersTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@members)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@members)}}
+          end
+        ]
       }
     ]) do
       assert Members.list_active("AAAAnZB0gGw") ==
-                                    {:ok, [Enum.at(@members["memberships"], 0)]}
+               {:ok, [Enum.at(@members["memberships"], 0)]}
     end
   end
 
@@ -78,15 +80,16 @@ defmodule Chatex.Service.Spaces.MembersTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@members)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@members)}}
+          end
+        ]
       }
     ]) do
       assert Members.list_attribute("AAAAnZB0gGw", "displayName") == {:ok, "- Osmara\n"}
@@ -98,15 +101,16 @@ defmodule Chatex.Service.Spaces.MembersTest do
       {
         Token,
         [:passthrough],
-        [for_scope: fn(_url) -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
+        [for_scope: fn _url -> {:ok, %{token: "0xFAKETOKEN_Q="}} end]
       },
       {
         HTTPoison,
         [:passthrough],
-        [request: fn(_method, _url, _params, _headers) ->
-          {:ok, %HTTPoison.Response{status_code: 200,
-                                                body: Poison.encode!(@members)}}
-        end]
+        [
+          request: fn _method, _url, _params, _headers ->
+            {:ok, %HTTPoison.Response{status_code: 200, body: Poison.encode!(@members)}}
+          end
+        ]
       }
     ]) do
       assert Members.random("AAAAnZB0gGw", "name") == {:ok, "users/111714068150425821220"}
