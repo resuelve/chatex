@@ -5,7 +5,7 @@ defmodule Chatex.MixProject do
     [
       app: :chatex,
       version: "2.0.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.14",
       package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
