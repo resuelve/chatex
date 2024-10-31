@@ -5,7 +5,10 @@
       push:
         tags:
           - "*"
-  
+    
+    env:
+        GOOGLE_CREDENTIALS: W3t9XQ==
+    
     jobs:
       publish-hexpm:
         name: publish to hex.pm
