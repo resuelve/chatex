@@ -5,6 +5,9 @@
         pull_request:
             branches: master
 
+    env:
+        GOOGLE_CREDENTIALS: W3t9XQ==
+
     jobs:
         build-and-test:
             name: Build and test
