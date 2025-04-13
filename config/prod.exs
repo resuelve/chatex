@@ -1,8 +1,9 @@
 import Config
 
-config :chatex, host: "${GOOGLE_CHAT_URL}"
-config :chatex, token: "${BOT_TOKEN}"
-config :chatex, client_email: "${BOT_CLIENT_EMAIL}"
+credentials =
+  case System.fetch_env("GCHAT_CREDENTIALS") do
+    {:ok, credentials} -> credentials
+    :error -> System.fetch_env!("GOOGLE_CREDENTIALS")
+  end
 
-config :goth,
-  json: "${GOOGLE_CREDENTIALS}" |> Base.decode64!()
+config :chatex, gcloud_credentials: credentials

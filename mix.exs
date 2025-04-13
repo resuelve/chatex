@@ -4,7 +4,7 @@ defmodule Chatex.MixProject do
   def project do
     [
       app: :chatex,
-      version: "2.1.0",
+      version: "3.0.0",
       elixir: "~> 1.14",
       package: package(),
       start_permanent: Mix.env() == :prod,
@@ -13,7 +13,7 @@ defmodule Chatex.MixProject do
       test_coverage: [tool: ExCoveralls],
       source_url: "https://github.com/resuelve/chatex",
       docs: [
-        main: "Bisnex"
+        main: "Chatex"
       ]
     ]
   end
@@ -29,6 +29,7 @@ defmodule Chatex.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Chatex.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -36,13 +37,13 @@ defmodule Chatex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:credo, "~> 1.6.7", only: [:dev, :test]},
-      {:excoveralls, "~> 0.12", only: :test},
-      {:goth, "~> 1.2.0"},
-      {:httpoison, "~> 1.8"},
+      {:credo, "~> 1.7", only: [:dev, :test]},
+      {:excoveralls, "~> 0.18", only: :test},
+      {:goth, "~> 1.4"},
+      {:httpoison, "~> 2.0"},
       {:mock, "~> 0.3.0", only: :test},
-      {:poison, "~> 3.1"},
-      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+      {:jason, "~> 1.4"},
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false}
     ]
   end
 
