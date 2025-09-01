@@ -27,6 +27,18 @@ defmodule Chatex.SpacesTest do
         "spaceType" => "DIRECT_MESSAGE",
         "spaceUri" => "https://chat.google.com/dm/AAAAyejWs-I?cls=11",
         "type" => "ROOM"
+      },
+      %{
+        "createTime" => "2018-05-04T17:43:36.261842Z",
+        "displayName" => "El Coyote responde 🐺",
+        "lastActiveTime" => "2025-04-02T23:13:40.855887Z",
+        "membershipCount" => %{"joinedDirectHumanUserCount" => 5},
+        "name" => "spaces/AAAA9_9aIRc",
+        "spaceHistoryState" => "HISTORY_ON",
+        "spaceThreadingState" => "THREADED_MESSAGES",
+        "spaceType" => "SPACE",
+        "spaceUri" => "https://chat.google.com/room/AAAA9_9aIRc?cls=11",
+        "type" => "ROOM"
       }
     ]
   }

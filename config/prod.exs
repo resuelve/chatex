@@ -7,3 +7,5 @@ credentials =
   end
 
 config :chatex, gcloud_credentials: credentials
+
+config :chatex, service_account_id: System.fetch_env!("GCHAT_ACCOUNT_ID")
