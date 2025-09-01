@@ -12,7 +12,8 @@ defmodule Chatex.Application do
 
   # ---------------------------------------------------------------------------
   # ---------------------------------------------------------------------------
-  defp _children() do
+  @spec _children :: any()
+  defp _children do
     case Application.fetch_env(:chatex, :service_account_id) do
       {:ok, nil} ->
         _children(:gcloud_credentials)
@@ -27,6 +28,7 @@ defmodule Chatex.Application do
     end
   end
 
+  @spec _children(atom()) :: any()
   defp _children(:gcloud_credentials) do
     case Application.fetch_env(:chatex, :gcloud_credentials) do
       {:ok, nil} ->
