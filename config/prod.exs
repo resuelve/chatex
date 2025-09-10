@@ -1,5 +1,20 @@
 import Config
 
-config :chatex, gcloud_credentials: System.get_env("GCHAT_CREDENTIALS")
+credentials =
+  case System.get_env("GCHAT_CREDENTIALS") do
+    {:ok, value} -> value
+    _ -> System.get_env("GOOGLE_CREDENTIALS")
+  end
 
-config :chatex, service_account_id: System.get_env("GCHAT_ACCOUNT_ID")
+config :chatex, gcloud_credentials: credentials
+
+account_id =
+  case System.get_env("GCHAT_ACCOUNT_ID") do
+    {:ok, value} ->
+      value
+
+    _ ->
+      System.get_env("GOOGLE_ACCOUNT_ID")
+  end
+
+config :chatex, service_account_id: account_id
