@@ -15,24 +15,27 @@ defmodule Chatex.Application do
   @spec _children :: any()
   defp _children do
     case Application.fetch_env(:chatex, :service_account_id) do
-      {:ok, nil} ->
+      {:ok, value} when value in [nil, ""] ->
         _children(:gcloud_credentials)
+
+      {:ok, "FAKE_GOOGLE_ACCOUNT_ID"} ->
+        []
 
       {:ok, _google_service_account_id} ->
         Logger.info("Chatex init with service_account_id")
 
         [{Goth, name: Chatex.Goth}]
 
-      error ->
-        error
+      _ ->
+        _children(:gcloud_credentials)
     end
   end
 
   @spec _children(atom()) :: any()
   defp _children(:gcloud_credentials) do
     case Application.fetch_env(:chatex, :gcloud_credentials) do
-      {:ok, nil} ->
-        "Value not found for chatex env"
+      {:ok, value} when value in [nil, ""] ->
+        Logger.error("Chatex not found a value for env")
 
       {:ok, "FAKE_GOOGLE_CREDENTIALS"} ->
         []
@@ -51,8 +54,10 @@ defmodule Chatex.Application do
 
         [{Goth, name: Chatex.Goth, source: source}]
 
-      error ->
-        error
+      invalid_value ->
+        Logger.error("Chatex not found a valid value for env:#{invalid_value}")
+
+        invalid_value
     end
   end
 end
